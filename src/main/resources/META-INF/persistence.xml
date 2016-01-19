@@ -5,6 +5,7 @@
 	version="2.1">
 
 	<persistence-unit name="default">
+		<class>br.com.sisgns.model.User</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url"
