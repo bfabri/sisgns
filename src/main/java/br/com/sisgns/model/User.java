@@ -3,14 +3,21 @@ package br.com.sisgns.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Email;
 
 @Entity
 public class User {
 
-	@Id
-	@GeneratedValue
+	@Id @GeneratedValue
 	private Long id;
+	
+	@NotNull(message = "{user.required.email}")
+	@Email(message = "{user.invalid.email}") 
 	private String email;
+	
+	@NotNull(message = "{user.required.password}")
 	private String password;
 
 	protected User() {
