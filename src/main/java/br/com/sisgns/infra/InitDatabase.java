@@ -7,6 +7,8 @@ import javax.persistence.EntityManagerFactory;
 
 import br.com.caelum.vraptor.events.VRaptorInitialized;
 import br.com.sisgns.model.User;
+import br.com.sisgns.security.Encrypted;
+import br.com.sisgns.security.PlainText;
 
 public class InitDatabase {
 	private EntityManagerFactory factory;
@@ -24,7 +26,7 @@ public class InitDatabase {
 			manager = factory.createEntityManager();
 			manager.getTransaction().begin();
 			
-			User user = new User("brunoferreirafabri@gmail.com", "123");
+			User user = new User("brunoferreirafabri@gmail.com", new Encrypted(new PlainText("1234567")).text());
 			manager.persist(user);
 			
 			manager.getTransaction().commit();
